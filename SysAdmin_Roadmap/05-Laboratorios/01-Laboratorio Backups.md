@@ -38,7 +38,6 @@ Un respaldo es inútil si está corrompido o incompleto. Un paso crucial en cual
   
 ## SOLUCIÓN 
 
-
 #### 1.Creacion de archivo de datos criticos
 
 Crearé el archivo txt que contendrá ennumerados los directorios importantes del ejemplo
