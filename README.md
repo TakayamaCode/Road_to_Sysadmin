@@ -1,27 +1,50 @@
-# Road_to_Sysadmin
+# 🛠️ Road to Sysadmin
 
-Bitácora de entrenamiento técnico y laboratorios de infraestructura.  
-Este repositorio documenta mi transición de **Soporte TI a Sysadmin Junior**, dominando mentalidad de sistemas, gestión de servidores y resolución de problemas en entornos reales.
+Bitácora técnica donde documento mi aprendizaje práctico en Linux, Bash y administración de sistemas.
+
+Este repositorio forma parte de mi transición de **Soporte TI (L1) a Sysadmin**, enfocándome en entender cómo funcionan los sistemas y cómo operarlos correctamente.
 
 ---
 
-## 🛠️ Stack Tecnológico en Formación
+## 🎯 Objetivo
 
-### Sistemas Operativos
-- Linux (Fedora / Ubuntu Server/ Parrot)
-- Windows (Windows Server)
+Construir una base sólida en sistemas Linux mediante práctica, automatización y resolución de problemas reales.
 
-### Herramientas Core
-- Bash Scripting, Power shell
-- Pipelines y procesamiento de texto (`grep`, `awk`, `sed`)
-- SSH
+---
 
-### Gestión de Sistemas
-- Control de procesos
-- Backups (`tar`, `gzip`)
-- Análisis de logs
+## 🚀 Contenido
 
-### Próximamente
-- Redes avanzadas
-- Virtualización
-- Docker
+* 🐧 Linux (fundamentos y administración)
+* ⚙️ Bash scripting
+* 🔄 Automatización de tareas
+* 🔍 Procesamiento de texto (`grep`, `awk`, `sed`)
+* 🔑 Acceso remoto (SSH)
+* 💾 Backups y manejo de datos
+
+---
+
+## 📂 Estructura
+
+```id="s2z7qv"
+00-Resources/   # Recursos y referencias
+01-Labs/        # Laboratorios prácticos
+02-Scripts/     # Scripts desarrollados
+```
+
+---
+
+## 🧠 Enfoque
+
+Este repositorio está orientado a:
+
+* Aprender haciendo
+* Entender cada proceso antes de automatizarlo
+* Documentar soluciones a problemas técnicos
+* Mejorar progresivamente mediante práctica
+
+---
+
+## 📌 Nota
+
+El contenido evoluciona a medida que avanzo en mi formación.
+
