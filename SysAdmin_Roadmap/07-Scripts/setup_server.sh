@@ -1,10 +1,26 @@
 #!/bin/bash
 
 #=======================================
-# VERSION 1.0
+# VERSION 2.0
 # Script: setup_server.sh
 # Proposito: Automatizar la instalacion de Nginx y configurar el firewall
 #=========================================
+
+#=============================
+# Aprendí condicionales y bucles basicos, asi que implementaré un verificador
+#==============================================================================
+
+# Función para verificar si el comando anterior falló
+
+verificar() {
+    
+    if [ $? -eq 0 ]; then
+        echo "Paso completado con éxito."
+    else
+        echo "ERROR: Algo salió mal en este punto. Abortando..."
+        exit 1
+    fi
+}
 
 echo "Iniciando la automatizacion.."
 
@@ -14,6 +30,7 @@ echo "Actualizando repositorios.."
 
 sudo apt update
 sudo apt upgrade -y
+verificar
 
 
 # 2. Instalacion de Nginx
@@ -21,6 +38,7 @@ sudo apt upgrade -y
 echo "Instalando Nginx..."
 
 sudo apt install nginx -y
+verificar
 
 #==============================================================================
 # 3. Ahora configurare el firewall para que me permita abrir los puertos necesarios
@@ -37,6 +55,7 @@ sudo apt install nginx -y
 echo "Configurando el firewall.."
 
 sudo ufw allow 'Nginx Full'
+verificar
 
 #==============================================================================
 # 4. Aquí me percate que si quiero aprender a conectarme por SSH tengo que abrir 
@@ -48,12 +67,14 @@ sudo ufw allow 'Nginx Full'
 echo "Permitir conexion SSH con OpenSSH..."
 
 sudo ufw allow OpenSSH
+verificar
 
 # 5. Activar el firewall
 
 echo "Activando el firewall..."
 
 sudo ufw enable
+verificar
 
 # 6. Verificacion de todo
 
@@ -72,8 +93,11 @@ sudo ufw status
 echo "Limpiando paquetes innecesarios..."
 
 sudo apt autoremove -y
+verificar
 sudo apt autoclean
+verificar
 sudo apt clean
+verificar
 
 
 # 8. Mensaje final...
