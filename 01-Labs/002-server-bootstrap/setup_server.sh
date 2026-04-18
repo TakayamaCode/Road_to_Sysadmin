@@ -3,7 +3,7 @@
 #==============================================================================
 #
 # SCRIPT: setup_server.sh
-# VERSION 3.1
+# VERSION 4.0
 # DESCRIPCION: Bootstrap inicial para Ubuntu Desktop () 
 # AUTOR: Brayan Nicolas Barrera Monroy - TakayamaCode
 #
@@ -24,13 +24,32 @@ verificar() {
 #==============================================================================
 # 1. REPORTE INICIAL DETALLADO (Versión 4)
 #==============================================================================
+echo "========================================================================="
+echo "                          REPORTE DE INICIO                           "
+echo "========================================================================="
 
-echo "---️ REPORTE DE INICIO ---"
-# Informacion basica
-echo "Fecha y hora: $(date)"
-echo "S.O:          $(lsb_release -ds)"
-echo "Usuario:      $USER"
-echo "Hostname:     $HOSTNAME"
+# Informacion basica del sistema
+# Se ha agrupado la mayoria de la informacion a reportar, se usa awk para filtrar y
+# obtener solo la informacion necesaria para el reporte, y se formatea el texto para
+# una experiencia de usuario final mas amena y claridad de lectura
+
+echo " [+] Identidad del Sistema: "
+echo "Fecha y hora: $(date +"%Y-%m-%d %T")"
+hostnamectl | awk -F': ' '
+/Operating System/ {os=$2} 
+/Kernel/           {k=$2} 
+/Architecture/     {a=$2} 
+/Static hostname/  {h=$2} 
+/Hardware Model/   {hm=$2} 
+/Virtualization/   {v=$2} 
+END {
+    printf "%-18s %s\n", "S.O:", os;
+    printf "%-18s %s\n", "Kernel:", k;
+    printf "%-18s %s\n", "Arquitectura:", a;
+    printf "%-18s %s\n", "Hostname:", h;
+    printf "%-18s %s\n", "Modelo:", hm;
+    printf "%-18s %s\n", "Virtualizacion:", v;
+}'
 echo "IP Local:     $(hostname -I | awk '{print $1}')"
 # Recursos
 echo "--- Recursos ---"
