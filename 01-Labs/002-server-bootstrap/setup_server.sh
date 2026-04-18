@@ -52,15 +52,15 @@ hostnamectl | awk -v d="$fecha_actual" -v ip="$ip_local" -v u="$usuario" -F': ' 
 /Hardware Model/   {hm=$2} 
 /Virtualization/   {v=$2} 
 END {
-    printf "%-18s %s\n", "|| Fecha y hora:", d;
-    printf "%-18s %s\n", "|| Usuario actual:", u;
-    printf "%-18s %s\n", "|| Hostname:", h;
-    printf "%-18s %s\n", "|| IP Local: ", ip;
-    printf "%-18s %s\n", "|| S.O:", os;
-    printf "%-18s %s\n", "|| Kernel:", k;
-    printf "%-18s %s\n", "|| Arquitectura:", a;
-    printf "%-18s %s\n", "|| Modelo:", hm;
-    printf "%-18s %s\n", "|| Virtualizacion:", (v ? v : "Physical");
+    printf "%-22s %s\n", "|| Fecha y hora:", d;
+    printf "%-22s %s\n", "|| Usuario actual:", u;
+    printf "%-22s %s\n", "|| Hostname:", h;
+    printf "%-22s %s\n", "|| IP Local:", ip;
+    printf "%-22s %s\n", "|| S.O:", os;
+    printf "%-22s %s\n", "|| Kernel:", k;
+    printf "%-22s %s\n", "|| Arquitectura:", a;
+    printf "%-22s %s\n", "|| Modelo:", hm;
+    printf "%-22s %s\n", "|| Virtualizacion:", (v ? v : "Physical");
 }'
 echo "||  " 
 # Recursos
@@ -71,9 +71,9 @@ echo "||  "
 echo "-------------------------------------------------------------------------"
 echo "||  " 
 awk -v disco="$disco" -v ram="$ram" -v up="$up" 'BEGIN {
-    printf "%-18s %s\n", "|| Espacio de disco: ", disco;
-    printf "%-22s %s\n", "|| Memoria Ram: ", ram;
-    printf "%-18s %s\n", "|| Tiempo encendido: ", up;
+    printf "%-22s %s\n", "|| Espacio de disco:", disco;
+    printf "%-22s %s\n", "|| Memoria Ram:", ram;
+    printf "%-22s %s\n", "|| Tiempo encendido:", up;
 }' 
 echo "||  " 
 
