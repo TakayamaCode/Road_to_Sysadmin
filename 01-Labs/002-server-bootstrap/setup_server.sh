@@ -25,17 +25,26 @@ verificar() {
 # 1. REPORTE INICIAL DETALLADO (Versión 4)
 #==============================================================================
 echo "========================================================================="
-echo "                          REPORTE DE INICIO                           "
+echo "                          REPORTE DE INICIO                              "
 echo "========================================================================="
 
 # Informacion basica del sistema
 # Se ha agrupado la mayoria de la informacion a reportar, se usa awk para filtrar y
 # obtener solo la informacion necesaria para el reporte, y se formatea el texto para
 # una experiencia de usuario final mas amena y claridad de lectura
+echo "||  "
+echo -e "||    [+] Identidad del Sistema: "
+echo "||  " 
+echo "-------------------------------------------------------------------------"
+echo "||  " 
+ip_local=$(hostname -I | awk '{print $1}')
+fecha_actual=$(date +"%Y-%m-%d %T")
+usuario=$(whoami)
+disco=$(df -h | awk '$NF == "/" {print $3 " de " $2 " (Disponible: " $4 ")" }')
+ram=$(free -h | awk '/^Mem:/ {print $3 " de " $2 " (Libre: " $4 ")"}')
+up=$(uptime -p | sed 's/up //')
 
-echo " [+] Identidad del Sistema: "
-echo "Fecha y hora: $(date +"%Y-%m-%d %T")"
-hostnamectl | awk -F': ' '
+hostnamectl | awk -v d="$fecha_actual" -v ip="$ip_local" -v u="$usuario" -F': ' '
 /Operating System/ {os=$2} 
 /Kernel/           {k=$2} 
 /Architecture/     {a=$2} 
@@ -43,16 +52,34 @@ hostnamectl | awk -F': ' '
 /Hardware Model/   {hm=$2} 
 /Virtualization/   {v=$2} 
 END {
-    printf "%-18s %s\n", "S.O:", os;
-    printf "%-18s %s\n", "Kernel:", k;
-    printf "%-18s %s\n", "Arquitectura:", a;
-    printf "%-18s %s\n", "Hostname:", h;
-    printf "%-18s %s\n", "Modelo:", hm;
-    printf "%-18s %s\n", "Virtualizacion:", v;
+    printf "%-18s %s\n", "|| Fecha y hora:", d;
+    printf "%-18s %s\n", "|| Usuario actual:", u;
+    printf "%-18s %s\n", "|| Hostname:", h;
+    printf "%-18s %s\n", "|| IP Local: ", ip;
+    printf "%-18s %s\n", "|| S.O:", os;
+    printf "%-18s %s\n", "|| Kernel:", k;
+    printf "%-18s %s\n", "|| Arquitectura:", a;
+    printf "%-18s %s\n", "|| Modelo:", hm;
+    printf "%-18s %s\n", "|| Virtualizacion:", (v ? v : "Physical");
 }'
-echo "IP Local:     $(hostname -I | awk '{print $1}')"
+echo "||  " 
 # Recursos
-echo "--- Recursos ---"
+echo "-------------------------------------------------------------------------" 
+echo "||  " 
+echo -e "||     [+] Estado de recursos: "
+echo "||  " 
+echo "-------------------------------------------------------------------------"
+echo "||  " 
+awk -v disco="$disco" -v ram="$ram" -v up="$up" 'BEGIN {
+    printf "%-18s %s\n", "|| Espacio de disco: ", disco;
+    printf "%-22s %s\n", "|| Memoria Ram: ", ram;
+    printf "%-18s %s\n", "|| Tiempo encendido: ", up;
+}' 
+echo "||  " 
+
+
+
+
 echo "Ram libre:    $(free -h | awk '/^Mem:/ {print $4 } " de " $2')"
 echo "Disco libre:  $(dh -f | awk '/^\/dev/ {print $4 " de " $2 " %-Uso: " $5}')"
 echo "Tiempo activo:    $(uptime -p)"
