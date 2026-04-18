@@ -1,23 +1,11 @@
 #!/bin/bash
 
 #==============================================================================
-# VERSION 3.0
-# Script: setup_server.sh
-# Proposito: Automatizar la instalacion de Nginx y configurar el firewall
 #
-# NOTAS DE ACTUALIZACIONES
-#
-# 1. Aprendí condicionales y bucles basicos, asi que implementaré un verificador
-# de fallos de comandos
-# 2. Me percaté de que primero me interesa saber el estado base de mi entorno,
-# así que agregué un reporte inicial
-# 3. Añadí un comprobador de actualizaciones
-# 4. Añadí un comprobador de espacio al inicio y al final de la limpieza para
-# comprobar resultados
-# 5. Añadí un reporte final del proceso con informacion valiosa para el usuario
-#
-# NOTA: A medida que aprenda más, ejecutare comandos con lo aprendido, ejecutando
-# con pipes, y otras opciones más detalaldas y informacion filtrada
+# SCRIPT: setup_server.sh
+# VERSION 3.1
+# DESCRIPCION: Bootstrap inicial para Ubuntu Desktop () 
+# AUTOR: Brayan Nicolas Barrera Monroy - TakayamaCode
 #
 #==============================================================================
 
@@ -33,12 +21,23 @@ verificar() {
     fi
 }
 
-# 1. Reporte inicial, S.O y version
+#==============================================================================
+# 1. REPORTE INICIAL DETALLADO (Versión 4)
+#==============================================================================
 
 echo "---️ REPORTE DE INICIO ---"
-
-lsb_release -a
-
+# Informacion basica
+echo "Fecha y hora: $(date)"
+echo "S.O:          $(lsb_release -ds)"
+echo "Usuario:      $USER"
+echo "Hostname:     $HOSTNAME"
+echo "IP Local:     $(hostname -I | awk '{print $1}')"
+# Recursos
+echo "--- Recursos ---"
+echo "Ram libre:    $(free -h | awk '/^Mem:/ {print $4 } " de " $2')"
+echo "Disco libre:  $(dh -f | awk '/^\/dev/ {print $4 " de " $2 " %-Uso: " $5}')"
+echo "Tiempo activo:    $(uptime -p)"
+# 
 echo "---------------------------"
 
 # 2. Quiero primero comprobar actualizaciones para decidir o no instalar
