@@ -76,14 +76,6 @@ awk -v disco="$disco" -v ram="$ram" -v up="$up" 'BEGIN {
     printf "%-22s %s\n", "|| Tiempo encendido:", up;
 }' 
 echo "||  " 
-
-
-
-
-echo "Ram libre:    $(free -h | awk '/^Mem:/ {print $4 } " de " $2')"
-echo "Disco libre:  $(dh -f | awk '/^\/dev/ {print $4 " de " $2 " %-Uso: " $5}')"
-echo "Tiempo activo:    $(uptime -p)"
-# 
 echo "---------------------------"
 
 # 2. Quiero primero comprobar actualizaciones para decidir o no instalar
