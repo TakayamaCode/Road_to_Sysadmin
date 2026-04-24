@@ -3,9 +3,10 @@
 #==============================================================================
 #
 # SCRIPT: setup_server.sh
-# VERSION 4.0
-# DESCRIPCION: Bootstrap inicial para Ubuntu Desktop () 
+# VERSION: 4.0.0
+# DESCRIPCION: Ubuntu Desktop - Auditor inicial del sistema (Lab 002).
 # AUTOR: Brayan Nicolas Barrera Monroy - TakayamaCode
+# FECHA: 2026-04-24
 #
 #==============================================================================
 
