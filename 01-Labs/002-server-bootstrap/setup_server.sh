@@ -40,7 +40,7 @@ echo "||  "
 ip_local=$(hostname -I | awk '{print $1}')
 fecha_actual=$(date +"%Y-%m-%d %T")
 usuario=$(whoami)
-disco=$(df -h | awk '$NF == "/" {print $3 " de " $2 " (Disponible: " $4 ")" }')
+disco=$(df -h | awk '$NF == "/" {print $3 " de " $2 " ( | Disponible: " $4 ")" }')
 ram=$(free -h | awk '/^Mem:/ {print $3 " de " $2 " (Libre: " $4 ")"}')
 up=$(uptime -p | sed 's/up //')
 
@@ -71,7 +71,7 @@ echo "||  "
 echo "-------------------------------------------------------------------------"
 echo "||  " 
 awk -v disco="$disco" -v ram="$ram" -v up="$up" 'BEGIN {
-    printf "%-22s %s\n", "|| Espacio de disco:", disco;
+    printf "%-22s %s\n", "|| Espacio en disco:", disco;
     printf "%-22s %s\n", "|| Memoria Ram:", ram;
     printf "%-22s %s\n", "|| Tiempo encendido:", up;
 }' 
