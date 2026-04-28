@@ -10,18 +10,6 @@
 #
 #==============================================================================
 
-# Función para verificar si el comando anterior falló
-
-verificar() {
-    
-    if [ $? -eq 0 ]; then
-        echo "Paso completado con éxito."
-    else
-        echo "ERROR: Algo salió mal en este punto. Abortando..."
-        exit 1
-    fi
-}
-
 #==============================================================================
 # 1. REPORTE INICIAL DETALLADO (Versión 4)
 #==============================================================================
@@ -96,7 +84,7 @@ echo "Actualizando repositorios.."
 
 sudo apt update
 sudo apt upgrade -y
-verificar
+
 
 # 9. Verificacion de todo
 
@@ -149,7 +137,7 @@ df -h
 echo "Limpiando paquetes innecesarios..."
 
 sudo apt autoremove -y
-verificar
+
 
 sudo apt autoclean
 
