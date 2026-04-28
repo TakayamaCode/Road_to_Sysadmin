@@ -11,8 +11,9 @@
 #==============================================================================
 
 #==============================================================================
-# 1. REPORTE INICIAL DETALLADO (Versión 4)
+# 1. REPORTE INICIAL
 #==============================================================================
+
 echo "========================================================================="
 echo "                          REPORTE DE INICIO                              "
 echo "========================================================================="
@@ -21,6 +22,7 @@ echo "========================================================================="
 # Se ha agrupado la mayoria de la informacion a reportar, se usa awk para filtrar y
 # obtener solo la informacion necesaria para el reporte, y se formatea el texto para
 # una experiencia de usuario final mas amena y claridad de lectura
+
 echo "||  "
 echo -e "||    [+] Identidad del Sistema: "
 echo "||  " 
