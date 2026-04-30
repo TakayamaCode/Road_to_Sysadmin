@@ -9,6 +9,9 @@
 # FECHA: 2026-04-24
 #
 #==============================================================================
+# Modo estricto de Bash
+
+set -euo pipefail
 
 #Validacion de usuario root 
 
