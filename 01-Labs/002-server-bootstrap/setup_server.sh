@@ -10,9 +10,6 @@
 #
 #==============================================================================
 if [ "$EUID" -ne 0 ]; then
-    echo "Error"
-    exit 1
-fi
 #==============================================================================
 # 1. REPORTE INICIAL
 #==============================================================================
@@ -72,6 +69,10 @@ awk -v disco="$disco" -v ram="$ram" -v up="$up" 'BEGIN {
 echo "||  " 
 echo "---------------------------"
 
+else
+    # Si no es root, solo imprime el error y NO hace nada más
+    echo "Error: Este script debe ejecutarse con privilegios de root."
+fi
 # 2. Quiero primero comprobar actualizaciones para decidir o no instalar
 
 echo "1. Verificando Actualizaciones..."
