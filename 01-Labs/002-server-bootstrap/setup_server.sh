@@ -76,7 +76,7 @@ echo "---------------------------"
 else
     # Si no es root, solo imprime el error y NO hace nada más
     echo "Error: Este script debe ejecutarse con privilegios de root."
-    echo "Saliendo..."
+    echo "Saliendo..." >&2
 fi
 
 # 2. Quiero primero comprobar actualizaciones para decidir o no instalar
