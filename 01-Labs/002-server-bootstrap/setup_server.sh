@@ -9,7 +9,11 @@
 # FECHA: 2026-04-24
 #
 #==============================================================================
+
+#Validacion de usuario root 
+
 if [ "$EUID" -eq 0 ]; then
+
 #==============================================================================
 # 1. REPORTE INICIAL
 #==============================================================================
@@ -72,7 +76,9 @@ echo "---------------------------"
 else
     # Si no es root, solo imprime el error y NO hace nada más
     echo "Error: Este script debe ejecutarse con privilegios de root."
+    echo "Saliendo..."
 fi
+
 # 2. Quiero primero comprobar actualizaciones para decidir o no instalar
 
 echo "1. Verificando Actualizaciones..."
